@@ -1,0 +1,3 @@
+# LabelImg dependencies
+setuptools == 78.1.0
+labelImg == 1.8.6
