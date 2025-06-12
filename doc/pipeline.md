@@ -23,7 +23,7 @@ ___
 	- jest gotowy skrypt w repozytorium do tego: ```extract_video_frames.py```;
 	- najlepiej to zrobić lokalnie, żeby ograniczyć czas zabawy z Google Drive;
 2. wyekstrahowane ramki, przed wrzuceniem do modelu, trzeba trochę podrasować:
-	- z pomocą Gimpa warto przejrzeć jakiś podzbiór ramek i dla nich wybrać z opcji:
+	- z pomocą skryptu ```frames_augmentation.py``` warto przejrzeć podzbiór ramek i dla nich wybrać z opcji:
 		- obrócić/zmienić perspektywę;
 		- przeskalować zdjęcie;
 		- zapodać szum;
