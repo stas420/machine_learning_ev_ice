@@ -17,9 +17,10 @@ Skrypty edytujemy pod siebie i środowisko, w którym pracujemy.
 ___
 # ogólne zasady
 ### przygotowanie danych
-
+0. pobranie danych:
+	- w zależności od potrzeb można sobie zedytować skrypt do tego: ```download_videos.py```
 1. z gotowych nagrań należy wyekstrahować ramki:
-	- jest gotowy skrypt w repozytorium do tego: ```tu nazwa```;
+	- jest gotowy skrypt w repozytorium do tego: ```extract_video_frames.py```;
 	- najlepiej to zrobić lokalnie, żeby ograniczyć czas zabawy z Google Drive;
 2. wyekstrahowane ramki, przed wrzuceniem do modelu, trzeba trochę podrasować:
 	- z pomocą Gimpa warto przejrzeć jakiś podzbiór ramek i dla nich wybrać z opcji:
@@ -41,7 +42,7 @@ ___
 		- jeśli samochód jest widoczny, ale tablica jest niewidoczna/nieobecna/rozmyta/nie da się jej jasno wyodrębnić, to nie oznaczamy w ogóle (background);
 	- ***TODO: co zrobić ze zdjęciami bez samochodów?*** 
 4. ***(przy korzystaniu z labelImg)*** należy przekonwertować plik .xml z etykietami do pliku .txt, który chce YOLO:
-	- należy to także zrobić lokalnie, jest skrypt do tego: ```tu nazwa```
+	- należy to także zrobić lokalnie, jest skrypt do tego: ```convert_xml_to_yolo.py```
 	- jeśli obraz nie został oznaczony, to skrypt dorobi pusty plik .txt do niego tak, aby był dalej brany pod uwagę w treningu, ale jako background;
 	- jeśli korzystasz z czegoś innego do etykietowania, to w inny sposób przekonwertuj etykiety do formatu YOLO;
 
@@ -52,7 +53,7 @@ ___
 2. ***(w przypadku korzystania z Colaba)*** podmontowanie Google Drive:
 	- bez komentarza
 3. rozdzielenie plików między dane treningowe i walidacyjne:
-	- jest skrypt do tego: ```tu nazwa```;
+	- jest skrypt do tego: ```move_to_training_data.py```;
 	- skrypt na zmianę wrzuca parę { zdjęcie, etykieta } do danych treningowych i walidacyjnych (trochę to pomoże z duplikatami ramek);
 4. przygotowanie maszyny:
 	- pobranie/zaktualizowanie repozytorium;
@@ -63,4 +64,5 @@ ___
 1. ***(pierwszy trening)*** wybór YOLO, które będzie wykorzystane do tuningowania
 2. ***(kolejne treningi)*** wzięcie YOLO z ostatniego treningu (lub starszego, w razie problemów), najlepiej w wersji *best.pt*
 	- po treningu warto zapisać jego efekty, wraz ze statystykami;
+	- można skontrolować działanie dziada z pomocą ```validation_helper.py```
 
