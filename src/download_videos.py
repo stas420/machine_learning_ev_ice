@@ -6,6 +6,7 @@ import ssl
 ####################################################################################
 
 # Change below variables as needed 
+# from CONSTANTS import
 
 # dates are used for videos with filenames like '2025-04-05.mp4' etc.
 START_DATE = dt.date(2025, 4, 5) #.strftime("%Y-%M-%d")

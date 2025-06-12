@@ -4,6 +4,7 @@ import os
 
 ################################################
 
+# from CONSTANTS import
 MODEL_PATH = './best.pt' # overwrite if needed
 INPUT_DIR = "./frames_test" # CHANGE ACCORDINGLY
 OUTPUT_DIR = "./results" # CHANGE ACCORDINGLY

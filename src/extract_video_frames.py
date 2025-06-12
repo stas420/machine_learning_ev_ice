@@ -4,6 +4,7 @@ from datetime import datetime as dt
 
 #############################################
 
+# from CONSTANTS import
 VIDEOS_PATH = 'videos' # CHANGE ACCORDINGLY
 FRAMES_PATH = 'frames' # CHANGE ACCORDINGLY
 

@@ -3,6 +3,7 @@ import shutil
 
 ######################################################
 
+# from CONSTANTS import
 FRAMES_WITH_LABELS = os.path.join('.', 'frames')   # CHANGE ACCORDINGLY
 TRAINING_DATA = os.path.join('.', 'training_data') # CHANGE ACCORDINGLY
 
@@ -17,7 +18,7 @@ def main():
   # if './training_data' does not exist, make it
   # if it does, make sure it is empty
   os.makedirs(TRAINING_DATA, exist_ok = True)
-  
+
   with os.scandir(TRAINING_DATA) as it:
     if not (next(it, None) is None):
       return

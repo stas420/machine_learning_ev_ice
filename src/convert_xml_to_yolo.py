@@ -3,6 +3,7 @@ import os
 
 ##########################################
 
+# from CONSTANTS import 
 DIR_PATH = os.path.join('.', 'frames') # CHANGE ACCORDINGLY
 
 ##########################################
