@@ -1,0 +1,6 @@
+CONTENT_PATH = '/content'
+CONTENT_DRIVE_PATH = CONTENT_PATH + '/drive'
+MOUNTED_DRIVE_PATH = CONTENT_DRIVE_PATH + '/MyDrive'
+TRAINING_DATA_PATH = CONTENT_PATH + '/training_data'
+REPO_PATH = CONTENT_PATH + '/machine_learning_ev_ice'
+REPO_SRC_PATH = REPO_PATH + '/src'
