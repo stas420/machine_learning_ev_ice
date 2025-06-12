@@ -4,8 +4,8 @@ from datetime import datetime as dt
 
 #############################################
 
-VIDEOS_PATH = './videos' # CHANGE ACCORDINGLY
-FRAMES_PATH = './frames' # CHANGE ACCORDINGLY
+VIDEOS_PATH = 'videos' # CHANGE ACCORDINGLY
+FRAMES_PATH = 'frames' # CHANGE ACCORDINGLY
 
 #############################################
 
@@ -17,7 +17,7 @@ TIMESTAMP = dt.now().strftime("%d%m%Y%H%M%S")
 def extract_frames(video_dir: str, video_name:str, output_dir: str) -> None:
     cap = cv2.VideoCapture(os.path.join(video_dir, video_name))
     saved = 0
-    output_prefix = TIMESTAMP + '-' + video_name[:-4]
+    output_prefix = os.path.join(output_dir, TIMESTAMP + '-' + video_name[:-4])
 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -31,11 +31,11 @@ def extract_frames(video_dir: str, video_name:str, output_dir: str) -> None:
 
 def is_dir_empty(path: str):
     if not os.path.isdir(path):
-        return False
+        os.makedirs(path, exist_ok = True)
     with os.scandir(path) as it:
         return next(it, None) is None
 
 # image extraction
 if is_dir_empty(FRAMES_PATH): # pro forma, to not let extract if there are any leftovers
     for x in os.listdir(VIDEOS_PATH):
-       extract_frames(VIDEOS_PATH + '/' + x, FRAMES_PATH)
+       extract_frames(VIDEOS_PATH, x, FRAMES_PATH)

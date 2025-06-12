@@ -3,7 +3,7 @@ import os
 
 ##########################################
 
-DIR_PATH = './frames' # CHANGE ACCORDINGLY
+DIR_PATH = os.path.join('.', 'frames') # CHANGE ACCORDINGLY
 
 ##########################################
 # look-up table = map of class name<->label
@@ -24,8 +24,9 @@ def convert_coordinates(size, box):
     return (x,y,w,h)
 
 def convert_xml2yolo(file_path: str):
-    xmldoc = minidom.parse(file_path)
-    fname_out = (file_path[:-4]+'.txt')
+    fname_in = os.path.join(DIR_PATH, file_path)
+    xmldoc = minidom.parse(fname_in)
+    fname_out = os.path.join(DIR_PATH, (file_path[:-4]+'.txt'))
 
     with open(fname_out, "w") as f:
 

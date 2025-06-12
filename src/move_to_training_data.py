@@ -3,8 +3,8 @@ import shutil
 
 ######################################################
 
-FRAMES_WITH_LABELS = './frames'   # CHANGE ACCORDINGLY
-TRAINING_DATA = './training_data' # CHANGE ACCORDINGLY
+FRAMES_WITH_LABELS = os.path.join('.', 'frames')   # CHANGE ACCORDINGLY
+TRAINING_DATA = os.path.join('.', 'training_data') # CHANGE ACCORDINGLY
 
 ######################################################
   
@@ -16,12 +16,15 @@ def main():
 
   # if './training_data' does not exist, make it
   # if it does, make sure it is empty
-  if not os.path.isdir(TRAINING_DATA):
-    os.makedirs(TRAINING_DATA, exist_ok = True)
+  os.makedirs(TRAINING_DATA, exist_ok = True)
+  
   with os.scandir(TRAINING_DATA) as it:
     if not (next(it, None) is None):
       return
-    
+
+  os.makedirs(os.path.join(TRAINING_DATA, 'train'), exist_ok = True)
+  os.makedirs(os.path.join(TRAINING_DATA, 'val'), exist_ok = True)
+
   directory = os.listdir(FRAMES_WITH_LABELS)
   filenames = [file[:-4] for file in directory if file.endswith(".jpg")]
 
@@ -35,9 +38,9 @@ def main():
     label_file = item + ".txt"
 
     if i % 2 == 0:
-      path_pref = os.path.join(TRAINING_DATA, '/train')
+      path_pref = os.path.join(TRAINING_DATA, 'train')
     else:
-      path_pref = os.path.join(TRAINING_DATA, '/val')
+      path_pref = os.path.join(TRAINING_DATA, 'val')
 
     shutil.copy(os.path.join(FRAMES_WITH_LABELS, img_file), os.path.join(path_pref, img_file))
 

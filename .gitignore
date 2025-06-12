@@ -2,4 +2,6 @@
 .vscode/
 **/*imgs*/
 **/*videos*/
+**/*frames*/
 **/*.zip
+**/training_data/
