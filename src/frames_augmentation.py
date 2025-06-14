@@ -7,7 +7,7 @@ from typing import List
 
 ####################################
 FRAMES_PATH = os.path.join('.', 'frames')
-AUG_FRAMES_PATH = os.path.join('.', 'aug_frames')
+# AUG_FRAMES_PATH = os.path.join('.', 'aug_frames') # use if you need augmented frames somewhere else
 ####################################
 
 # Define the image processing functions (from above)
@@ -83,7 +83,7 @@ def img_augmentation(image: cv2.typing.MatLike, enum_list: List[AugType]) -> cv2
 
 
 def main() -> None:
-    os.makedirs(AUG_FRAMES_PATH, exist_ok = True)
+    # os.makedirs(AUG_FRAMES_PATH, exist_ok = True)
 
     AUG_COUNT_FACTOR = 0.5 # Determines how much of the input files will be "augmented"
 
@@ -93,14 +93,13 @@ def main() -> None:
     images_to_aug = [(file, cv2.imread(os.path.join(FRAMES_PATH, file))) for file in files_to_aug]
     enums_list = [AugType.ADD_NOISE, AugType.ADJUST_COLOUR, AugType.ROTATE, AugType.SCALE]
     
-    counter = 0
-
     for filename, img in images_to_aug:
         print(f'Processing {filename}')
         enums_to_use = random.sample(enums_list, random.randint(1, 4))
         new_img = img_augmentation(img, enums_to_use)
-        cv2.imwrite(os.path.join(AUG_FRAMES_PATH, filename), new_img)
-        counter += 1
+        new_filename = filename[:-4] + '-aug.jpg'
+        # when you need separate path for augmented imgs, change prefix below
+        cv2.imwrite(os.path.join(FRAMES_PATH, new_filename), new_img)
 
 if __name__ == '__main__':
     main()

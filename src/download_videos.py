@@ -10,12 +10,12 @@ import ssl
 
 # dates are used for videos with filenames like '2025-04-05.mp4' etc.
 START_DATE = dt.date(2025, 4, 5) #.strftime("%Y-%M-%d")
-END_DATE = dt.date(2025, 6, 9) #.strftime()
+END_DATE = dt.date(2025, 6, 13) #.strftime()
 
 #URL_PREFIX = "https://storage.sbg.cloud.ovh.net/v1/AUTH_06ca1283ce304b2f9196a035aac07edc/timelapses/zalewo-fontanna/"
 URL_PREFIX = "https://worldcam.live/timelapse/ostrowiec-swietokrzyski/"
 URL_SUFFIX = ".mp4"
-OUTPUT_DIR = "./videos"
+OUTPUT_DIR = os.path.join('.', "videos")
 
 ####################################################################################
 
@@ -33,6 +33,7 @@ def get_urls(start_date, end_date) -> list[tuple[str, str]]:
         # construct the URL
         url = f"{URL_PREFIX}{formatted_date}{URL_SUFFIX}"
         urls.append((url, f"{formatted_date}.mp4"))
+    
     return urls
 
 def download_video(url: str, filename: str) -> None:

@@ -2,11 +2,20 @@ import cv2
 import os
 from datetime import datetime as dt
 
+# Info:
+#
+# If you encounter "moov atom not found" don't worry,
+# the video must have been corrupted during the download,
+# just skip it.
+#
+# extracted frame filename format is: 
+# SCRIPTRUNTIMESTAMP-video-date-frame_num.jpg
+
 #############################################
 
 # from CONSTANTS import
 VIDEOS_PATH = 'videos' # CHANGE ACCORDINGLY
-FRAMES_PATH = 'frames' # CHANGE ACCORDINGLY
+FRAMES_PATH = 'frames_all' # CHANGE ACCORDINGLY
 
 #############################################
 
@@ -28,7 +37,10 @@ def extract_frames(video_dir: str, video_name:str, output_dir: str) -> None:
             frame_path = output_prefix + '-' + f"frame_{saved:03d}.jpg" #os.path.join(output_dir, f"frame_{saved:03d}.jpg")
             cv2.imwrite(frame_path, frame)
             saved += 1
+
     cap.release()
+
+    print(f'extracted {saved} frames for {video_dir}/{video_name}')
 
 def is_dir_empty(path: str):
     if not os.path.isdir(path):

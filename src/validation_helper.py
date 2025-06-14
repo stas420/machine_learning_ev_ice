@@ -5,9 +5,9 @@ import os
 ################################################
 
 # from CONSTANTS import
-MODEL_PATH = './best.pt' # overwrite if needed
-INPUT_DIR = "./frames_test" # CHANGE ACCORDINGLY
-OUTPUT_DIR = "./results" # CHANGE ACCORDINGLY
+MODEL_PATH = os.path.join('.', 'best.pt') # overwrite if needed
+INPUT_DIR = os.path.join('.', 'frames_test') # CHANGE ACCORDINGLY
+OUTPUT_DIR = os.path.join('.', 'results') # CHANGE ACCORDINGLY
 
 ################################################
 
