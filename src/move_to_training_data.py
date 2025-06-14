@@ -32,6 +32,7 @@ def main():
   label_file = ""
   img_file = ""
   path_pref = ""
+  copied_counter = 0
 
   for i in range(len(filenames)):
     item = filenames[i]
@@ -47,9 +48,12 @@ def main():
 
     if label_file in directory:
       shutil.copy(os.path.join(FRAMES_WITH_LABELS, label_file), os.path.join(path_pref, label_file))
+      copied_counter += 1
     else:
       with open(os.path.join(path_pref, label_file), 'a'):
         pass
+
+  print(f'There were {copied_counter} already existing label files, created {len(filenames) - copied_counter} empty ones')
 
 if __name__ == '__main__':
   main()

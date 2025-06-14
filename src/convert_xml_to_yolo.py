@@ -29,6 +29,10 @@ def convert_xml2yolo(file_path: str):
     xmldoc = minidom.parse(fname_in)
     fname_out = os.path.join(DIR_PATH, (file_path[:-4]+'.txt'))
 
+    if fname_out in os.listdir(DIR_PATH):
+        print(f'{fname_out} label already exists, skippin')
+        return
+    
     with open(fname_out, "w") as f:
 
         itemlist = xmldoc.getElementsByTagName('object')
