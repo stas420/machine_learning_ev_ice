@@ -40,7 +40,6 @@ ___
 		- tablica powinna być cała, może być z obramowaniem - powinien być widoczny pasek z lewej strony (ten niebieski, z kodem kraju i znakiem UE);
 		- jeśli tablica jest widoczna, ale nie można określić jej koloru, to oznaczamy ```Other```;
 		- jeśli samochód jest widoczny, ale tablica jest niewidoczna/nieobecna/rozmyta/nie da się jej jasno wyodrębnić, to nie oznaczamy w ogóle (background);
-	- ***TODO: co zrobić ze zdjęciami bez samochodów?*** 
 4. ***(przy korzystaniu z labelImg)*** należy przekonwertować plik .xml z etykietami do pliku .txt, który chce YOLO:
 	- należy to także zrobić lokalnie, jest skrypt do tego: ```convert_xml_to_yolo.py```
 	- jeśli obraz nie został oznaczony, to skrypt dorobi pusty plik .txt do niego tak, aby był dalej brany pod uwagę w treningu, ale jako background;
